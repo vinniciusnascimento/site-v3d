@@ -136,14 +136,14 @@ function render() {
         </button>
         <span class="tag">EXEMPLO · SOB ENCOMENDA</span>
         <button class="heart" data-fav="${p.id}" aria-label="Favoritar ${p.name}" aria-pressed="${favorites.has(p.id)}">
-          ${favorites.has(p.id) ? '♥' : '♡'}
+          <i class="${favorites.has(p.id) ? 'fa-solid' : 'fa-regular'} fa-heart" aria-hidden="true"></i>
         </button>
       </div>
       <p class="category">${p.category}</p>
       <h3><a href="#produto-${p.id}" data-product="${p.id}">${p.name}</a></h3>
       <div class="card-bottom">
         <span>Valor sob consulta</span>
-        <button data-product="${p.id}" aria-label="Ver ${p.name}">↗</button>
+        <button data-product="${p.id}" aria-label="Ver ${p.name}"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
       </div>
     </article>
   `).join('');
@@ -151,7 +151,8 @@ function render() {
     $('#empty').hidden = !!list.length;
     $('#result-count').textContent =
         `${list.length}${matches.length > list.length ? ` de ${matches.length}` : ''} ${list.length === 1 ? 'objeto encontrado' : 'objetos encontrados'}${onlyFav ? ' · favoritos' : ''}`;
-    $('#fav-count').textContent = favorites.size;
+    $('#fav-count').innerHTML =
+        `<i class="fa-${onlyFav ? 'solid' : 'regular'} fa-heart" aria-hidden="true"></i> ${favorites.size}`;
     $('#saved').setAttribute('aria-pressed', onlyFav);
 
     document.querySelectorAll('[data-category]').forEach(b => {
@@ -209,7 +210,7 @@ function openProduct(id) {
           `).join('')}
         </div>
         <p>Valor sob consulta. Nomes e opções ilustrativos; confirme os detalhes no orçamento.</p>
-        <button class="primary" data-request="${p.id}">Preparar meu pedido ↗</button>
+        <button class="primary" data-request="${p.id}">Preparar meu pedido <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
       </div>
     </div>
   `;

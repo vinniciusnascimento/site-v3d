@@ -8,6 +8,7 @@
     <meta name="description" content="Explore todos os produtos V3D impressos em 3D e feitos sob encomenda.">
     <title>Produtos — V3D</title>
     <link rel="icon" href="assets/logo.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,7 +22,7 @@
             <a href="index.html">Início</a>
             <a href="#colecao" aria-current="page">Produtos</a>
         </nav>
-        <button class="outline" id="saved">Favoritos <span id="fav-count">0</span></button>
+        <button class="outline" id="saved">Favoritos <span id="fav-count"><i class="fa-regular fa-heart" aria-hidden="true"></i> 0</span></button>
     </header>
 
     <main>
@@ -36,7 +37,7 @@
             <div class="catalog-note">FEITO SOB ENCOMENDA <span>Cada peça é impressa depois do seu pedido. Cor, tamanho e acabamento são confirmados no orçamento.</span></div>
             <div class="toolbar">
                 <label class="search">
-                    <span>⌕</span>
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     <input id="search" type="search" placeholder="O que você está procurando?"
                         aria-label="Buscar produtos">
                 </label>
@@ -73,15 +74,15 @@
             <span>V3D<small>DO DIGITAL PARA O MUNDO REAL.</small></span>
         </a>
         <p>Impressão 3D com personalidade.<br>Maceió · Alagoas</p>
-        <a href="index.html">Voltar ao início ↑</a>
+        <a href="index.html">Voltar ao início <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
     </footer>
 
     <dialog id="detail">
-        <button class="close" aria-label="Fechar detalhes">×</button>
+        <button class="close" aria-label="Fechar detalhes"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         <div id="detail-content"></div>
     </dialog>
     <dialog id="request">
-        <button class="close" aria-label="Fechar pedido">×</button>
+        <button class="close" aria-label="Fechar pedido"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         <div class="request-body">
             <p class="eyebrow">PROJETO PERSONALIZADO</p>
             <h2>Vamos começar<br>pela sua ideia.</h2>
@@ -103,7 +104,7 @@
                         <option>Outra</option>
                     </select>
                 </label>
-                <button class="primary" type="submit">Continuar pelo WhatsApp ↗</button>
+                <button class="primary" type="submit">Continuar pelo WhatsApp <i class="fa-brands fa-whatsapp" aria-hidden="true"></i></button>
                 <p id="form-status" role="status"></p>
             </form>
         </div>
