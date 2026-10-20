@@ -833,13 +833,21 @@ button:hover {
     display: none !important
 }
 
-@media(min-width:1500px) {
+@media (min-width: 1500px) {
     .hero-image {
         min-height: 640px
     }
 }
 
-@media(max-width:1000px) {
+@media (max-width: 1000px) {
+    header {
+        gap: 16px
+    }
+
+    nav {
+        gap: 20px
+    }
+
     .hero {
         gap: 25px
     }
@@ -852,12 +860,16 @@ button:hover {
         gap: 10px
     }
 
+    .hero-note span {
+        font-size: 7px
+    }
+
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr))
     }
 
-    .hero-note span {
-        font-size: 7px
+    .steps {
+        gap: 24px
     }
 
     .ribbon span:last-child,
@@ -866,73 +878,119 @@ button:hover {
     }
 }
 
-@media(max-width:650px) {
+@media (max-width: 800px) {
+    header {
+        height: 86px
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 24px
+    }
+
+    .hero-copy {
+        padding-top: 12px
+    }
+
+    .hero-image {
+        min-height: 0;
+        aspect-ratio: 1.45 / 1
+    }
+
+    .hero-note {
+        margin-top: 28px;
+        gap: 18px
+    }
+
+    .hero-note span {
+        font-size: 8px
+    }
+
+    .custom {
+        gap: 24px
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 24px
+    }
+
+    .steps h3 {
+        margin: 15px 0 10px
+    }
+
+    .steps p {
+        max-width: none
+    }
+}
+
+@media (max-width: 650px) {
     .private {
+        align-items: center;
+        gap: 12px;
+        padding: 9px 5%;
         font-size: 8px;
-        padding: 9px 5%
+        letter-spacing: 1px
     }
 
     .private span {
+        max-width: 55%;
         font-size: 8px;
-        max-width: 180px;
         text-align: right;
         letter-spacing: 0
     }
 
     header {
-        height: 82px;
-        gap: 10px
+        height: 76px;
+        gap: 8px;
+        padding: 0 4%
+    }
+
+    .brand {
+        gap: 7px
     }
 
     .brand img {
-        width: 43px;
-        height: 43px
+        width: 40px;
+        height: 40px
     }
 
     .brand>span {
-        font-size: 24px
+        font-size: 22px
     }
 
     .brand small {
         font-size: 6px;
-        letter-spacing: 1px
+        letter-spacing: .8px
     }
 
     nav {
-        gap: 14px;
-        font-size: 11px
+        gap: 12px;
+        font-size: 10px
     }
 
-    nav a:last-child {
+    header nav a[href="#como-funciona"] {
         display: none
     }
 
     header .outline {
-        padding: 10px;
+        flex: 0 0 auto;
+        padding: 9px;
         font-size: 0
     }
 
     header .outline #fav-count i {
-        font-size: 14px
+        font-size: 13px
     }
 
     header .outline span {
-        font-size: 11px;
-        margin-left: 5px
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-        padding-top: 15px;
-        gap: 30px
-    }
-
-    .hero-copy {
-        padding-top: 25px
+        margin-left: 3px;
+        font-size: 10px
     }
 
     h1 {
-        font-size: 58px;
+        font-size: clamp(44px, 11vw, 58px);
         letter-spacing: -3px
     }
 
@@ -940,50 +998,84 @@ button:hover {
         display: none
     }
 
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.5px
+    }
+
     .lead {
-        font-size: 13px;
-        max-width: 340px
+        max-width: 36rem;
+        font-size: 13px
+    }
+
+    .primary {
+        max-width: 100%;
+        gap: 16px;
+        padding: 15px 18px
     }
 
     .hero-note {
-        margin-top: 25px;
-        gap: 20px
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        margin-top: 24px
     }
 
     .hero-image {
-        min-height: 450px
+        aspect-ratio: 1 / 1.08
+    }
+
+    .image-label {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        padding: 16px 55px 16px 15px
     }
 
     .image-label strong {
-        font-size: 17px
+        font-size: 16px
+    }
+
+    .image-label button {
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px
+    }
+
+    .vertical {
+        right: 8px
     }
 
     .ribbon {
+        gap: 10px;
+        padding: 16px 5%;
         font-size: 8px;
-        letter-spacing: 1px;
-        padding: 17px 5%;
-        gap: 12px
+        letter-spacing: .7px
     }
 
-    .ribbon span:nth-of-type(3) {
-        display: none
-    }
-
+    .ribbon span:nth-of-type(3),
     .ribbon>i:nth-of-type(2) {
         display: none
     }
 
     .collection,
     .how {
-        padding: 60px 5%
+        padding: 56px 5%
     }
 
     .section-top {
-        display: block
+        display: block;
+        margin-bottom: 26px
     }
 
     .section-top>p {
-        margin-top: 20px
+        margin-top: 16px
+    }
+
+    h2 {
+        font-size: clamp(30px, 8vw, 42px);
+        letter-spacing: -1.2px
     }
 
     .catalog-note {
@@ -997,16 +1089,26 @@ button:hover {
     }
 
     .toolbar {
-        display: block
-    }
-
-    .sort {
-        justify-content: flex-end;
-        margin-top: 12px
+        display: grid;
+        gap: 12px;
+        margin: 22px 0 18px
     }
 
     .search {
-        width: 100%
+        width: 100%;
+        min-height: 48px
+    }
+
+    .search>i {
+        font-size: 18px
+    }
+
+    .sort {
+        justify-content: space-between
+    }
+
+    .sort select {
+        min-height: 42px
     }
 
     .filters {
@@ -1014,8 +1116,12 @@ button:hover {
     }
 
     .filters button {
-        padding: 10px 13px;
+        padding: 10px 12px;
         font-size: 10px
+    }
+
+    .filters span {
+        margin-left: 7px
     }
 
     .grid {
@@ -1023,75 +1129,58 @@ button:hover {
     }
 
     .tag {
-        left: 7px;
         top: 8px;
+        left: 7px;
+        padding: 5px;
         font-size: 7px;
-        padding: 5px
+        letter-spacing: .5px
     }
 
     .heart {
-        right: 6px;
         top: 6px;
-        width: 28px;
-        height: 28px
+        right: 6px;
+        width: 30px;
+        height: 30px
+    }
+
+    .card .category {
+        margin-top: 14px;
+        font-size: 8px;
+        letter-spacing: .5px
     }
 
     .card h3 {
         font-size: 16px
     }
 
-    .card .category {
-        font-size: 8px;
-        letter-spacing: .5px
-    }
-
     .card-bottom {
+        gap: 8px;
         font-size: 10px
     }
 
     .custom {
         grid-template-columns: 1fr;
-        padding: 50px 5%;
-        gap: 0
+        gap: 0;
+        padding: 52px 5%
     }
 
     .layer-art {
-        min-height: 260px
+        min-height: 240px;
+        transform: none
     }
 
-    .steps {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        margin-top: 30px
+    .layer-art div {
+        width: min(250px, 70vw)
     }
 
-    .steps h3 {
-        margin: 15px 0 10px
-    }
-
-    .steps p {
-        max-width: none
-    }
-
-    .detail-layout {
-        grid-template-columns: 1fr
-    }
-
-    .detail-layout>img {
-        max-height: 350px;
-        object-position: center
-    }
-
-    .detail-info {
-        padding: 25px
-    }
-
-    .request-body {
-        padding: 45px 25px 25px
+    .layer-art span {
+        left: 30%;
+        font-size: 28px
     }
 
     footer {
-        gap: 20px
+        gap: 16px;
+        padding: 34px 5% 22px
     }
 
     footer .brand {
@@ -1102,17 +1191,107 @@ button:hover {
         margin: 0
     }
 
-    footer>small {
-        font-size: 9px
+    footer>p,
+    footer>a:last-of-type {
+        font-size: 11px
+    }
+
+    .detail-layout {
+        grid-template-columns: 1fr
+    }
+
+    .detail-layout>img {
+        width: 100%;
+        height: auto;
+        max-height: 36vh;
+        aspect-ratio: 1.35 / 1;
+        object-position: center
+    }
+
+    .detail-info {
+        padding: 24px 20px
+    }
+
+    .detail-info h2 {
+        font-size: 28px
+    }
+
+    .request-body {
+        padding: 48px 20px 24px
     }
 
     #toast {
-        width: 85%;
+        right: 5%;
+        bottom: 16px;
+        left: 5%;
+        width: 90%;
         text-align: center
+    }
+
+    #empty {
+        padding: 36px 12px
     }
 
     html {
         scroll-padding-top: 20px
+    }
+}
+
+@media (max-width: 380px) {
+    header {
+        gap: 6px;
+        padding-right: 3%;
+        padding-left: 3%
+    }
+
+    .brand img {
+        width: 34px;
+        height: 34px
+    }
+
+    .brand>span {
+        font-size: 20px
+    }
+
+    nav {
+        gap: 8px;
+        font-size: 9px
+    }
+
+    .hero-note {
+        gap: 8px 12px;
+        letter-spacing: .8px
+    }
+
+    .image-label span {
+        font-size: 7px;
+        letter-spacing: 1px
+    }
+
+    .filters button {
+        padding: 9px 10px
+    }
+
+    .grid {
+        gap: 20px 10px
+    }
+
+    .card h3 {
+        font-size: 15px
+    }
+
+    .card-bottom {
+        font-size: 9px
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto
+    }
+
+    * {
+        transition: none !important
     }
 }
 
