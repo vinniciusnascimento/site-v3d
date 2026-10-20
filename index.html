@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description"
+        content="V3D: objetos impressos em 3D, design e personalização. Vitrine privada de demonstração.">
+    <title>V3D — Do digital para o mundo real</title>
+    <link rel="icon" href="assets/logo.webp">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header><a class="brand" href="#inicio" aria-label="V3D início"><img src="assets/logo.webp"
+                alt="Logo V3D"><span>V3D<small>IMPRESSÃO 3D</small></span></a>
+        <nav aria-label="Principal"><a href="produtos.html">Todos os produtos</a><a href="#personalize">Personalize</a><a
+                href="#como-funciona">Como funciona</a></nav><button class="outline" id="saved">Favoritos <span
+                id="fav-count">0</span></button>
+    </header>
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow"><i></i> IDEIAS EM CADA CAMADA</p>
+                <h1>Do digital<br>para o <em>seu<br>mundo real.</em></h1>
+                <p class="lead">Objetos com personalidade. Design que organiza, decora e transforma o seu espaço, camada
+                    por camada.</p><a class="primary" href="produtos.html">Ver todos os produtos <span>↗</span></a>
+                <div class="hero-note"><span>FEITO EM 3D</span><span>CRIADO PARA VOCÊ</span><span>MACEIÓ, AL</span>
+                </div>
+            </div>
+            <div class="hero-image"><img src="assets/suporte.webp"
+                    alt="Suporte ondulado para celular e relógio sobre uma mesa">
+                <div class="image-label"><span>DESIGN QUE FAZ PARTE DA ROTINA</span><strong>Seu setup, com outra
+                        forma.</strong><button data-product="0" aria-label="Ver suporte Duo">↗</button></div><span
+                    class="vertical">COLEÇÃO V3D / 01</span>
+            </div>
+        </section>
+        <div class="ribbon"><span>FORMA + FUNÇÃO</span><b>✳</b><span>IMPRESSÃO 3D</span><b>✳</b><span>PERSONALIDADE EM
+                CADA DETALHE</span><b>✳</b><span>DO SEU JEITO</span></div>
+        <section id="colecao" class="collection">
+            <div class="section-top">
+                <div>
+                    <p class="eyebrow">01 / EXPLORE AS POSSIBILIDADES</p>
+                    <h2>Pequenos objetos.<br>Novas possibilidades.</h2>
+                </div>
+                <p>Encontre uma nova forma de dar<br>personalidade ao seu dia a dia.</p>
+            </div>
+            <div class="catalog-note">FEITO SOB ENCOMENDA <span>Cada peça é impressa depois do seu pedido. Cor, tamanho e acabamento são confirmados no orçamento.</span></div>
+            <div class="toolbar"><label class="search"><span>⌕</span><input id="search" type="search"
+                        placeholder="O que você está procurando?" aria-label="Buscar produtos"></label><label
+                    class="sort">Ordenar <select id="sort" aria-label="Ordenar produtos">
+                        <option value="featured">Destaques</option>
+                        <option value="az">Nome: A–Z</option>
+                        <option value="za">Nome: Z–A</option>
+                    </select></label></div>
+            <div class="filters" aria-label="Categorias"><button class="active" data-category="Todos"
+                    aria-pressed="true">Todos <span>04</span></button><button data-category="Setup & tecnologia"
+                    aria-pressed="false">Setup & tecnologia</button><button data-category="Organização"
+                    aria-pressed="false">Organização</button><button data-category="Decoração"
+                    aria-pressed="false">Decoração</button></div>
+            <div class="results"><span id="result-count" aria-live="polite"></span><button id="reset">Limpar
+                    filtros</button></div>
+            <div id="products" class="grid" data-limit="4"></div>
+            <a class="primary collection-more" href="produtos.html">Veja mais produtos <span>↗</span></a>
+            <div id="empty" hidden>
+                <h3>Nenhum objeto por aqui.</h3>
+                <p>Tente outro termo ou limpe os filtros para explorar a coleção.</p><button class="primary"
+                    id="empty-reset">Ver todos os produtos</button>
+            </div>
+        </section>
+        <section id="personalize" class="custom">
+            <div>
+                <p class="eyebrow">02 / SUA IDEIA, NOSSA PRÓXIMA CAMADA</p>
+                <h2>Tem algo em mente?<br><em>Vamos dar forma.</em></h2>
+                <p>Um presente diferente, uma peça para o seu espaço ou uma ideia que só você teve. Comece seu projeto
+                    por aqui.</p><button class="primary" id="custom-open">Montar meu pedido <span>↗</span></button>
+            </div>
+            <div class="layer-art" aria-hidden="true">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div><span>IMAGINE.<br>CRIE.<br>MATERIALIZE.</span>
+            </div>
+        </section>
+        <section id="como-funciona" class="how">
+            <p class="eyebrow">03 / DA IDEIA AO OBJETO</p>
+            <h2>Um processo simples.<br>Um resultado com a sua cara.</h2>
+            <div class="steps">
+                <article><span>01</span>
+                    <h3>Escolha ou imagine</h3>
+                    <p>Explore a coleção ou descreva a peça que você quer criar.</p>
+                </article>
+                <article><span>02</span>
+                    <h3>Defina os detalhes</h3>
+                    <p>Cor, tamanho e acabamento são confirmados no orçamento.</p>
+                </article>
+                <article><span>03</span>
+                    <h3>Dê vida à ideia</h3>
+                    <p>Após aprovar o orçamento, combine produção e entrega em Maceió.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer><a class="brand" href="#inicio"><img src="assets/logo.webp" alt=""><span>V3D<small>DO DIGITAL PARA O MUNDO
+                    REAL.</small></span></a>
+        <p>Impressão 3D com personalidade.<br>Maceió · Alagoas</p><a href="#colecao">Voltar à coleção ↑</a>
+    </footer>
+    <dialog id="detail"><button class="close" aria-label="Fechar detalhes">×</button>
+        <div id="detail-content"></div>
+    </dialog>
+    <dialog id="request"><button class="close" aria-label="Fechar pedido">×</button>
+        <div class="request-body">
+            <p class="eyebrow">PROJETO PERSONALIZADO</p>
+            <h2>Vamos começar<br>pela sua ideia.</h2>
+            <p class="muted">Preencha os detalhes e continue pelo WhatsApp para solicitar seu orçamento.</p>
+            <form id="request-form"><label>Seu nome<input name="name" required maxlength="80"
+                        placeholder="Como podemos chamar você?"></label><label>Descreva sua ideia<textarea name="idea"
+                        required maxlength="2000"
+                        placeholder="Objeto, uso, tamanho aproximado..."></textarea></label><label>Cor desejada<select
+                        name="color">
+                        <option>A definir</option>
+                        <option>Verde</option>
+                        <option>Branco</option>
+                        <option>Preto</option>
+                        <option>Outra</option>
+                    </select></label><button class="primary" type="submit">Continuar pelo WhatsApp ↗</button>
+                <p id="form-status" role="status"></p>
+            </form>
+        </div>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>

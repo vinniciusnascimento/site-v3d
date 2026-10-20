@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="description" content="Explore todos os produtos V3D impressos em 3D e feitos sob encomenda.">
+    <title>Produtos — V3D</title>
+    <link rel="icon" href="assets/logo.webp">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <a class="brand" href="index.html" aria-label="V3D início">
+            <img src="assets/logo.webp" alt="Logo V3D">
+            <span>V3D<small>IMPRESSÃO 3D</small></span>
+        </a>
+        <nav aria-label="Principal">
+            <a href="index.html">Início</a>
+            <a href="#colecao" aria-current="page">Produtos</a>
+        </nav>
+        <button class="outline" id="saved">Favoritos <span id="fav-count">0</span></button>
+    </header>
+
+    <main>
+        <section id="colecao" class="collection">
+            <div class="section-top">
+                <div>
+                    <p class="eyebrow">COLEÇÃO V3D / FEITOS SOB ENCOMENDA</p>
+                    <h1>Todos os produtos.</h1>
+                </div>
+                <p>Explore as peças, encontre sua favorita<br>e veja os detalhes de cada produto.</p>
+            </div>
+            <div class="catalog-note">FEITO SOB ENCOMENDA <span>Cada peça é impressa depois do seu pedido. Cor, tamanho e acabamento são confirmados no orçamento.</span></div>
+            <div class="toolbar">
+                <label class="search">
+                    <span>⌕</span>
+                    <input id="search" type="search" placeholder="O que você está procurando?"
+                        aria-label="Buscar produtos">
+                </label>
+                <label class="sort">Ordenar
+                    <select id="sort" aria-label="Ordenar produtos">
+                        <option value="featured">Destaques</option>
+                        <option value="az">Nome: A–Z</option>
+                        <option value="za">Nome: Z–A</option>
+                    </select>
+                </label>
+            </div>
+            <div class="filters" aria-label="Categorias">
+                <button class="active" data-category="Todos" aria-pressed="true">Todos <span>04</span></button>
+                <button data-category="Setup & tecnologia" aria-pressed="false">Setup & tecnologia</button>
+                <button data-category="Organização" aria-pressed="false">Organização</button>
+                <button data-category="Decoração" aria-pressed="false">Decoração</button>
+            </div>
+            <div class="results">
+                <span id="result-count" aria-live="polite"></span>
+                <button id="reset">Limpar filtros</button>
+            </div>
+            <div id="products" class="grid"></div>
+            <div id="empty" hidden>
+                <h3>Nenhum objeto por aqui.</h3>
+                <p>Tente outro termo ou limpe os filtros para explorar a coleção.</p>
+                <button class="primary" id="empty-reset">Ver todos os produtos</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a class="brand" href="index.html">
+            <img src="assets/logo.webp" alt="">
+            <span>V3D<small>DO DIGITAL PARA O MUNDO REAL.</small></span>
+        </a>
+        <p>Impressão 3D com personalidade.<br>Maceió · Alagoas</p>
+        <a href="index.html">Voltar ao início ↑</a>
+    </footer>
+
+    <dialog id="detail">
+        <button class="close" aria-label="Fechar detalhes">×</button>
+        <div id="detail-content"></div>
+    </dialog>
+    <dialog id="request">
+        <button class="close" aria-label="Fechar pedido">×</button>
+        <div class="request-body">
+            <p class="eyebrow">PROJETO PERSONALIZADO</p>
+            <h2>Vamos começar<br>pela sua ideia.</h2>
+            <p class="muted">Preencha os detalhes e continue pelo WhatsApp para solicitar seu orçamento.</p>
+            <form id="request-form">
+                <label>Seu nome
+                    <input name="name" required maxlength="80" placeholder="Como podemos chamar você?">
+                </label>
+                <label>Descreva sua ideia
+                    <textarea name="idea" required maxlength="2000"
+                        placeholder="Objeto, uso, tamanho aproximado..."></textarea>
+                </label>
+                <label>Cor desejada
+                    <select name="color">
+                        <option>A definir</option>
+                        <option>Verde</option>
+                        <option>Branco</option>
+                        <option>Preto</option>
+                        <option>Outra</option>
+                    </select>
+                </label>
+                <button class="primary" type="submit">Continuar pelo WhatsApp ↗</button>
+                <p id="form-status" role="status"></p>
+            </form>
+        </div>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>
