@@ -14,36 +14,60 @@
 </head>
 
 <body>
-    <header><a class="brand" href="#inicio" aria-label="V3D início"><img src="assets/logo.webp"
-                alt="Logo V3D"><span>V3D<small>IMPRESSÃO 3D</small></span></a>
-        <nav aria-label="Principal"><a href="produtos.html">Todos os produtos</a><a
-                href="#personalize">Personalize</a><a href="#como-funciona">Como funciona</a></nav><button
-            class="outline" id="saved">Favoritos <span id="fav-count"><i class="fa-regular fa-heart"
-                    aria-hidden="true"></i> 0</span></button>
+    <header>
+        <a class="brand" href="#inicio" aria-label="V3D início">
+            <img src="assets/logo.webp" alt="Logo V3D">
+            <span>V3D<small>IMPRESSÃO 3D</small></span>
+        </a>
+        <nav aria-label="Principal">
+            <a href="produtos.html">Todos os produtos</a>
+            <a href="#personalize">Personalize</a>
+            <a href="#como-funciona">Como funciona</a>
+        </nav>
+        <button class="outline" id="saved">
+            Favoritos
+            <span id="fav-count"><i class="fa-regular fa-heart" aria-hidden="true"></i> 0</span>
+        </button>
     </header>
     <main>
         <section id="inicio" class="hero">
             <div class="hero-copy">
                 <p class="eyebrow"><i></i> IDEIAS EM CADA CAMADA</p>
                 <h1>Do digital<br> para o <em>seu <br>mundo real.</em></h1>
-                <p class="lead">Objetos com personalidade. Design que organiza, decora e transforma o seu espaço, camada
-                    por camada.</p><a class="primary" href="produtos.html">Ver todos os produtos <i
-                        class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-                <div class="hero-note"><span>FEITO EM 3D</span><span>CRIADO PARA VOCÊ</span><span>MACEIÓ, AL</span>
+                <p class="lead">
+                    Objetos com personalidade. Design que organiza, decora e transforma o seu espaço, camada por camada.
+                </p>
+                <a class="primary" href="produtos.html">
+                    Ver todos os produtos
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+                <div class="hero-note">
+                    <span>FEITO EM 3D</span>
+                    <span>CRIADO PARA VOCÊ</span>
+                    <span>MACEIÓ, AL</span>
                 </div>
             </div>
-            <div class="hero-image"><img src="assets/suporte.webp"
-                    alt="Suporte ondulado para celular e relógio sobre uma mesa">
-                <div class="image-label"><span>DESIGN QUE FAZ PARTE DA ROTINA</span><strong>Seu setup, com outra
-                        forma.</strong><button id="hero-product" aria-label="Ver suporte Duo"><i
-                            class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></div><span
-                    class="vertical">COLEÇÃO V3D / 01</span>
+            <div class="hero-image">
+                <img src="assets/suporte.webp" alt="Suporte ondulado para celular e relógio sobre uma mesa">
+                <div class="image-label">
+                    <span>DESIGN QUE FAZ PARTE DA ROTINA</span>
+                    <strong>Seu setup, com outra forma.</strong>
+                    <button id="hero-product" aria-label="Ver suporte Duo">
+                        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <span class="vertical">COLEÇÃO V3D / 01</span>
             </div>
         </section>
-        <div class="ribbon"><span>FORMA + FUNÇÃO</span><i class="fa-solid fa-star"
-                aria-hidden="true"></i><span>IMPRESSÃO 3D</span><i class="fa-solid fa-star"
-                aria-hidden="true"></i><span>PERSONALIDADE EM
-                CADA DETALHE</span><i class="fa-solid fa-star" aria-hidden="true"></i><span>DO SEU JEITO</span></div>
+        <div class="ribbon">
+            <span>FORMA + FUNÇÃO</span>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span>IMPRESSÃO 3D</span>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span>PERSONALIDADE EM CADA DETALHE</span>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span>DO SEU JEITO</span>
+        </div>
         <section id="colecao" class="collection">
             <div class="section-top">
                 <div>
@@ -54,20 +78,29 @@
             </div>
             <div class="catalog-note">IMPRESSÃO 3D V3D <span>Confira os produtos disponíveis. Personalizações e prazos
                     podem ser combinados no orçamento.</span></div>
-            <div class="toolbar"><label class="search"><i class="fa-solid fa-magnifying-glass"
-                        aria-hidden="true"></i><input id="search" type="search"
-                        placeholder="O que você está procurando?" aria-label="Buscar produtos"></label><label
-                    class="sort">Ordenar <select id="sort" aria-label="Ordenar produtos">
+            <div class="toolbar">
+                <label class="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="search" type="search" placeholder="O que você está procurando?" aria-label="Buscar produtos">
+                </label>
+                <label class="sort">Ordenar
+                    <select id="sort" aria-label="Ordenar produtos">
                         <option value="featured">Destaques</option>
                         <option value="az">Nome: A–Z</option>
                         <option value="za">Nome: Z–A</option>
-                    </select></label></div>
+                    </select>
+                </label>
+            </div>
             <div class="filters" id="filters" aria-label="Categorias"></div>
-            <div class="results"><span id="result-count" aria-live="polite"></span><button id="reset">Limpar
-                    filtros</button></div>
+            <div class="results">
+                <span id="result-count" aria-live="polite"></span>
+                <button id="reset">Limpar filtros</button>
+            </div>
             <div id="products" class="grid" data-limit="4" aria-live="polite"></div>
-            <a class="primary collection-more" href="produtos.html">Veja mais produtos <i
-                    class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+            <a class="primary collection-more" href="produtos.html">
+                Veja mais produtos
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
             <div id="empty" hidden>
                 <h3>Nenhum objeto por aqui.</h3>
                 <p>Tente outro termo ou limpe os filtros para explorar a coleção.</p><button class="primary"
@@ -78,16 +111,21 @@
             <div>
                 <p class="eyebrow">02 / SUA IDEIA, NOSSA PRÓXIMA CAMADA</p>
                 <h2>Tem algo em mente?<br><em>Vamos dar forma.</em></h2>
-                <p>Um presente diferente, uma peça para o seu espaço ou uma ideia que só você teve. Comece seu projeto
-                    por aqui.</p><button class="primary" id="custom-open">Montar meu pedido <i
-                        class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+                <p>
+                    Um presente diferente, uma peça para o seu espaço ou uma ideia que só você teve. Comece seu projeto por aqui.
+                </p>
+                <button class="primary" id="custom-open">
+                    Montar meu pedido
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </button>
             </div>
             <div class="layer-art" aria-hidden="true">
                 <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
-                <div></div><span>IMAGINE.<br>CRIE.<br>MATERIALIZE.</span>
+                <div></div>
+                <span>IMAGINE.<br>CRIE.<br>MATERIALIZE.</span>
             </div>
         </section>
         <section id="como-funciona" class="how">
@@ -109,33 +147,50 @@
             </div>
         </section>
     </main>
-    <footer><a class="brand" href="#inicio"><img src="assets/logo.webp" alt=""><span>V3D<small>DO DIGITAL PARA O MUNDO
-                    REAL.</small></span></a>
-        <p>Impressão 3D com personalidade.<br>Maceió · Alagoas</p><a href="#colecao">Voltar à coleção <i
-                class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+    <footer>
+        <a class="brand" href="#inicio">
+            <img src="assets/logo.webp" alt="">
+            <span>V3D<small>DO DIGITAL PARA O MUNDO REAL.</small></span>
+        </a>
+        <p>Impressão 3D com personalidade.<br>Maceió · Alagoas</p>
+        <a href="#colecao">
+            Voltar à coleção <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </a>
     </footer>
-    <dialog id="detail"><button class="close" aria-label="Fechar detalhes"><i class="fa-solid fa-xmark"
-                aria-hidden="true"></i></button>
+    <dialog id="detail">
+        <button class="close" aria-label="Fechar detalhes">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
         <div id="detail-content"></div>
     </dialog>
-    <dialog id="request"><button class="close" aria-label="Fechar pedido"><i class="fa-solid fa-xmark"
-                aria-hidden="true"></i></button>
+    <dialog id="request">
+        <button class="close" aria-label="Fechar pedido">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
         <div class="request-body">
             <p class="eyebrow">PROJETO PERSONALIZADO</p>
             <h2>Vamos começar<br>pela sua ideia.</h2>
             <p class="muted">Preencha os detalhes e continue pelo WhatsApp para solicitar seu orçamento.</p>
-            <form id="request-form"><label>Seu nome<input name="name" required maxlength="80"
-                        placeholder="Como podemos chamar você?"></label><label>Descreva sua ideia<textarea name="idea"
-                        required maxlength="2000"
-                        placeholder="Objeto, uso, tamanho aproximado..."></textarea></label><label>Cor desejada<select
-                        name="color">
+            <form id="request-form">
+                <label>Seu nome
+                    <input name="name" required maxlength="80" placeholder="Como podemos chamar você?">
+                </label>
+                <label>Descreva sua ideia
+                    <textarea name="idea" required maxlength="2000" placeholder="Objeto, uso, tamanho aproximado..."></textarea>
+                </label>
+                <label>Cor desejada
+                    <select name="color">
                         <option>A definir</option>
                         <option>Verde</option>
                         <option>Branco</option>
                         <option>Preto</option>
                         <option>Outra</option>
-                    </select></label><button class="primary" type="submit">Continuar pelo WhatsApp <i
-                        class="fa-brands fa-whatsapp" aria-hidden="true"></i></button>
+                    </select>
+                </label>
+                <button class="primary" type="submit">
+                    Continuar pelo WhatsApp
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </button>
                 <p id="form-status" role="status"></p>
             </form>
         </div>
