@@ -1,7 +1,7 @@
 const API_URL = 'https://v3d-dashboard-kappa.vercel.app/api';
 
 // Configure com DDI + DDD + número, apenas dígitos (ex.: 5582999999999).
-const WHATSAPP_NUMBER = '';
+const WHATSAPP_NUMBER = 5582996177211;
 const $ = (selector) => document.querySelector(selector);
 
 const normalize = (value) => String(value ?? '')
@@ -263,18 +263,33 @@ document.querySelectorAll('dialog').forEach((dialog) => dialog.addEventListener(
     if (event.target === dialog) dialog.close();
 }));
 
+
 $('#request-form').addEventListener('submit', (event) => {
     event.preventDefault();
+
     const form = new FormData(event.currentTarget);
-    const message = `Olá! Gostaria de solicitar um orçamento na V3D.\n\nNome: ${String(form.get('name')).trim()}\nPedido: ${String(form.get('idea')).trim()}\nCor desejada: ${form.get('color')}`;
+
+    const name = String(form.get('name') || '').trim();
+    const idea = String(form.get('idea') || '').trim();
+    const color = String(form.get('color') || 'Não informada');
+
+    const message = `Olá! Gostaria de solicitar um orçamento na V3D.
+
+Nome: ${name}
+Pedido: ${idea}
+Cor desejada: ${color}`;
 
     if (!/^\d{12,15}$/.test(WHATSAPP_NUMBER)) {
-        $('#form-status').textContent = 'Configure WHATSAPP_NUMBER no app.js para ativar o envio.';
+        $('#form-status').textContent =
+            'Número do WhatsApp não configurado.';
         return;
     }
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank', 'noopener,noreferrer');
 });
+
 
 setupReveals();
 loadProducts();
