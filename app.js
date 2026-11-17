@@ -16,16 +16,8 @@ async function loadProducts() {
     try {
         products = await getAllProducts();
 
-        console.log("Produtos carregados:", products);
+        console.log("Produtos recebidos:", products);
 
-        // Atualiza favoritos depois de carregar os produtos
-        favorites = new Set(
-            JSON.parse(localStorage.getItem('v3d-favorites') || '[]')
-                .map(Number)
-                .filter(id => products.some(p => Number(p.id) === id))
-        );
-
-        // Renderiza somente depois de receber os produtos
         render();
 
     } catch (error) {
@@ -57,22 +49,7 @@ const COLOR_HEX = {
 };
 
 function filtered() {
-    const query = normalize($('#search').value.trim());
-
-    const list = products.filter(p =>
-        (category === 'Todos' || p.category === category) &&
-        (!onlyFav || favorites.has(p.id)) &&
-        normalize(`${p.name} ${p.category} ${p.desc}`).includes(query)
-    );
-
-    const sort = $('#sort').value;
-    if (sort !== 'featured') {
-        list.sort((a, b) =>
-            a.name.localeCompare(b.name, 'pt-BR') * (sort === 'az' ? 1 : -1)
-        );
-    }
-
-    return list;
+    return products;
 }
 
 function render() {
@@ -84,7 +61,13 @@ function render() {
     <article class="card">
       <div class="product-image">
         <button class="photo-button" data-product="${p.id}" aria-label="Ver detalhes de ${p.name}">
-          <img class="photo" src="assets/${p.image}.webp" alt="${p.name} em uma composição de mesa" loading="lazy">
+          <img
+            class="photo"
+            src="${API_URL}/produtos/${p.id}/imagem"
+            alt="${p.name}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='assets/placeholder.webp'"
+        >
         </button>
         <span class="tag">EXEMPLO · SOB ENCOMENDA</span>
         <button class="heart" data-fav="${p.id}" aria-label="Favoritar ${p.name}" aria-pressed="${favorites.has(p.id)}">
@@ -133,12 +116,15 @@ function toast(t) {
 }
 
 function openProduct(id) {
-    const p = products.find(p => p.id === id);
+    const p = products.find(p => Number(p.id) === Number(id));
     if (!p) return;
 
     $('#detail-content').innerHTML = `
     <div class="detail-layout">
-      <img src="assets/${p.image}.webp" alt="${p.name}">
+      <img
+            src="${API_URL}/produtos/${p.id}/imagem"
+            alt="${p.name}"
+        >
       <div class="detail-info">
         <p class="eyebrow">${p.category.toUpperCase()} / EXEMPLO</p>
         <h2>${p.name}</h2>
