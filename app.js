@@ -52,20 +52,23 @@ function openRequest(product) {
 function reset() { category = 'Todos'; onlyFav = false; $('#search').value = ''; $('#sort').value = 'featured'; render(); }
 async function loadProducts() {
     $('#result-count').textContent = 'Carregando produtos...';
+    let data;
     try {
         const response = await fetch(`${API_URL}/produtos`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        products = Array.isArray(data) ? data : Array.isArray(data.products) ? data.products : Array.isArray(data.produtos) ? data.produtos : [];
-        renderFilters(); render();
-        const featured = products.find(p => p.has_image && p.image) || products[0];
-        if (featured) { const button = $('#hero-product'); button.dataset.product = featured.id; button.setAttribute('aria-label', `Ver ${featured.name}`); }
+        data = await response.json();
     } catch (error) {
         console.error('Erro ao carregar produtos:', error);
         $('#result-count').textContent = 'Não foi possível carregar os produtos.';
         $('#products').innerHTML = '<p class="load-error">Erro de conexão com o catálogo. Tente novamente mais tarde.</p>';
         $('#empty').hidden = true;
+        return;
     }
+    products = Array.isArray(data) ? data : Array.isArray(data.products) ? data.products : Array.isArray(data.produtos) ? data.produtos : [];
+    renderFilters(); render();
+    const featured = products.find(p => p.has_image && p.image) || products[0];
+    const heroButton = $('#hero-product');
+    if (featured && heroButton) { heroButton.dataset.product = featured.id; heroButton.setAttribute('aria-label', `Ver ${featured.name}`); }
 }
 document.addEventListener('click', event => {
     const button = event.target.closest('button,a'); if (!button) return;
