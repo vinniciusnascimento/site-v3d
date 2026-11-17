@@ -1,85 +1,29 @@
-const products = [
-    {
-        id: 0,
-        name: 'Suporte Duo',
-        category: 'Setup & tecnologia',
-        image: 'suporte',
-        desc: 'Um lugar para o celular e o relógio, com curvas que deixam a mesa mais interessante. Eletrônicos e cabos não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Branco', 'Preto']
-    },
-    {
-        id: 1,
-        name: 'Estação Onda',
-        category: 'Setup & tecnologia',
-        image: 'onda',
-        desc: 'Uma base de linhas onduladas para compor seu setup. Compatibilidade e componentes de carregamento devem ser confirmados antes da encomenda.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Verde', 'Preto']
-    },
-    {
-        id: 2,
-        name: 'Organizador Flow',
-        category: 'Organização',
-        image: 'organizador',
-        desc: 'Organização com personalidade para canetas e pequenos acessórios da mesa. Acessórios da foto não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-    {
-        id: 3,
-        name: 'Dragão Guardião',
-        category: 'Decoração',
-        image: 'dragao',
-        desc: 'Uma peça de presença para decorar seu espaço e acomodar um alto-falante. Compatibilidade a confirmar. Eletrônico não incluído.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-        {
-        id: 0,
-        name: 'Suporte Duo',
-        category: 'Setup & tecnologia',
-        image: 'suporte',
-        desc: 'Um lugar para o celular e o relógio, com curvas que deixam a mesa mais interessante. Eletrônicos e cabos não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Branco', 'Preto']
-    },
-    {
-        id: 1,
-        name: 'Estação Onda',
-        category: 'Setup & tecnologia',
-        image: 'onda',
-        desc: 'Uma base de linhas onduladas para compor seu setup. Compatibilidade e componentes de carregamento devem ser confirmados antes da encomenda.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Verde', 'Preto']
-    },
-    {
-        id: 2,
-        name: 'Organizador Flow',
-        category: 'Organização',
-        image: 'organizador',
-        desc: 'Organização com personalidade para canetas e pequenos acessórios da mesa. Acessórios da foto não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-    {
-        id: 3,
-        name: 'Dragão Guardião',
-        category: 'Decoração',
-        image: 'dragao',
-        desc: 'Uma peça de presença para decorar seu espaço e acomodar um alto-falante. Compatibilidade a confirmar. Eletrônico não incluído.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
+const API_URL = "https://v3d-dashboard-kappa.vercel.app/api";
+
+let products = [];
+
+async function getAllProducts() {
+    const response = await fetch(`${API_URL}/produtos`);
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
     }
-];
+
+    return await response.json();
+}
+
+async function loadProducts() {
+    try {
+        products = await getAllProducts();
+
+        console.log("Produtos recebidos:", products);
+
+        render();
+
+    } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+    }
+}
 
 const $ = s => document.querySelector(s);
 
@@ -105,22 +49,7 @@ const COLOR_HEX = {
 };
 
 function filtered() {
-    const query = normalize($('#search').value.trim());
-
-    const list = products.filter(p =>
-        (category === 'Todos' || p.category === category) &&
-        (!onlyFav || favorites.has(p.id)) &&
-        normalize(`${p.name} ${p.category} ${p.desc}`).includes(query)
-    );
-
-    const sort = $('#sort').value;
-    if (sort !== 'featured') {
-        list.sort((a, b) =>
-            a.name.localeCompare(b.name, 'pt-BR') * (sort === 'az' ? 1 : -1)
-        );
-    }
-
-    return list;
+    return products;
 }
 
 function render() {
@@ -132,7 +61,13 @@ function render() {
     <article class="card">
       <div class="product-image">
         <button class="photo-button" data-product="${p.id}" aria-label="Ver detalhes de ${p.name}">
-          <img class="photo" src="assets/${p.image}.webp" alt="${p.name} em uma composição de mesa" loading="lazy">
+          <img
+            class="photo"
+            src="${API_URL}/produtos/${p.id}/imagem"
+            alt="${p.name}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='assets/placeholder.webp'"
+        >
         </button>
         <span class="tag">EXEMPLO · SOB ENCOMENDA</span>
         <button class="heart" data-fav="${p.id}" aria-label="Favoritar ${p.name}" aria-pressed="${favorites.has(p.id)}">
@@ -181,12 +116,15 @@ function toast(t) {
 }
 
 function openProduct(id) {
-    const p = products.find(p => p.id === id);
+    const p = products.find(p => Number(p.id) === Number(id));
     if (!p) return;
 
     $('#detail-content').innerHTML = `
     <div class="detail-layout">
-      <img src="assets/${p.image}.webp" alt="${p.name}">
+      <img
+            src="${API_URL}/produtos/${p.id}/imagem"
+            alt="${p.name}"
+        >
       <div class="detail-info">
         <p class="eyebrow">${p.category.toUpperCase()} / EXEMPLO</p>
         <h2>${p.name}</h2>
@@ -319,4 +257,4 @@ $('#request-form').addEventListener('submit', e => {
         `https://wa.me/${process.env.NUMERO_TELEFONE}?text=${encodeURIComponent(text)}`;
 });
 
-render();
+loadProducts();
