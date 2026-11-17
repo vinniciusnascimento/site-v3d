@@ -25,6 +25,44 @@ const imageURL = (product) => product.has_image === 0 || !product.image
     ? 'assets/placeholder.webp'
     : `${API_URL}/produtos/${encodeURIComponent(product.id)}/imagem`;
 
+document.documentElement.classList.add('js');
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealObserver = 'IntersectionObserver' in window && !reducedMotion
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+    : null;
+
+function reveal(element, { delay = 0, variant = '' } = {}) {
+    if (!element || element.classList.contains('reveal')) return;
+    element.classList.add('reveal');
+    if (variant) element.classList.add(`reveal-${variant}`);
+    element.style.setProperty('--delay', `${delay}ms`);
+    if (revealObserver) revealObserver.observe(element);
+    else element.classList.add('is-visible');
+}
+
+function setupReveals() {
+    reveal(document.querySelector('.hero-copy'), { variant: 'left' });
+    reveal(document.querySelector('.hero-image'), { variant: 'right', delay: 150 });
+    reveal(document.querySelector('.ribbon'));
+    document.querySelectorAll('.section-top, .catalog-note, .toolbar, .filters, .results, .collection-more, .custom > div:first-child, .how > .eyebrow, .how > h2, footer')
+        .forEach((element, index) => reveal(element, { delay: (index % 3) * 80 }));
+    document.querySelectorAll('.steps article')
+        .forEach((element, index) => reveal(element, { delay: index * 120 }));
+}
+
+function revealCards() {
+    document.querySelectorAll('#products .card').forEach((card, index) => {
+        reveal(card, { delay: (index % 4) * 90, variant: 'scale' });
+    });
+}
+
 let products = [];
 let category = 'Todos';
 let onlyFav = false;
@@ -86,6 +124,8 @@ function render() {
             </div>
         </article>
     `).join('');
+
+    revealCards();
 
     $('#empty').hidden = matches.length > 0;
     $('#result-count').textContent = `${list.length}${matches.length > list.length ? ` de ${matches.length}` : ''} ${matches.length === 1 ? 'produto encontrado' : 'produtos encontrados'}`;
@@ -236,4 +276,5 @@ $('#request-form').addEventListener('submit', (event) => {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
 });
 
+setupReveals();
 loadProducts();

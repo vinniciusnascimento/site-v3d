@@ -1357,3 +1357,44 @@ button:hover {
         max-height: 36vh;
     }
 }
+
+/* Transições suaves de entrada */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.js .reveal-left { transform: translateX(-28px); }
+.js .reveal-right { transform: translateX(28px); }
+.js .reveal-scale { transform: translateY(20px) scale(.96); }
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+.js header {
+    animation: header-in .7s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes header-in {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js .reveal,
+    .js .reveal-left,
+    .js .reveal-right,
+    .js .reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none !important;
+    }
+
+    .js header { animation: none; }
+}
