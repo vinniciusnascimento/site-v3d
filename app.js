@@ -1,85 +1,37 @@
-const products = [
-    {
-        id: 0,
-        name: 'Suporte Duo',
-        category: 'Setup & tecnologia',
-        image: 'suporte',
-        desc: 'Um lugar para o celular e o relógio, com curvas que deixam a mesa mais interessante. Eletrônicos e cabos não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Branco', 'Preto']
-    },
-    {
-        id: 1,
-        name: 'Estação Onda',
-        category: 'Setup & tecnologia',
-        image: 'onda',
-        desc: 'Uma base de linhas onduladas para compor seu setup. Compatibilidade e componentes de carregamento devem ser confirmados antes da encomenda.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Verde', 'Preto']
-    },
-    {
-        id: 2,
-        name: 'Organizador Flow',
-        category: 'Organização',
-        image: 'organizador',
-        desc: 'Organização com personalidade para canetas e pequenos acessórios da mesa. Acessórios da foto não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-    {
-        id: 3,
-        name: 'Dragão Guardião',
-        category: 'Decoração',
-        image: 'dragao',
-        desc: 'Uma peça de presença para decorar seu espaço e acomodar um alto-falante. Compatibilidade a confirmar. Eletrônico não incluído.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-        {
-        id: 0,
-        name: 'Suporte Duo',
-        category: 'Setup & tecnologia',
-        image: 'suporte',
-        desc: 'Um lugar para o celular e o relógio, com curvas que deixam a mesa mais interessante. Eletrônicos e cabos não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Branco', 'Preto']
-    },
-    {
-        id: 1,
-        name: 'Estação Onda',
-        category: 'Setup & tecnologia',
-        image: 'onda',
-        desc: 'Uma base de linhas onduladas para compor seu setup. Compatibilidade e componentes de carregamento devem ser confirmados antes da encomenda.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Areia', 'Verde', 'Preto']
-    },
-    {
-        id: 2,
-        name: 'Organizador Flow',
-        category: 'Organização',
-        image: 'organizador',
-        desc: 'Organização com personalidade para canetas e pequenos acessórios da mesa. Acessórios da foto não incluídos.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
-    },
-    {
-        id: 3,
-        name: 'Dragão Guardião',
-        category: 'Decoração',
-        image: 'dragao',
-        desc: 'Uma peça de presença para decorar seu espaço e acomodar um alto-falante. Compatibilidade a confirmar. Eletrônico não incluído.',
-        size: 'Dimensões a confirmar',
-        material: 'Material a confirmar',
-        colors: ['Branco', 'Verde', 'Preto']
+const API_URL = "https://v3d-dashboard-kappa.vercel.app/api";
+
+let products = [];
+
+async function getAllProducts() {
+    const response = await fetch(`${API_URL}/produtos`);
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
     }
-];
+
+    return await response.json();
+}
+
+async function loadProducts() {
+    try {
+        products = await getAllProducts();
+
+        console.log("Produtos carregados:", products);
+
+        // Atualiza favoritos depois de carregar os produtos
+        favorites = new Set(
+            JSON.parse(localStorage.getItem('v3d-favorites') || '[]')
+                .map(Number)
+                .filter(id => products.some(p => Number(p.id) === id))
+        );
+
+        // Renderiza somente depois de receber os produtos
+        render();
+
+    } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+    }
+}
 
 const $ = s => document.querySelector(s);
 
@@ -319,4 +271,4 @@ $('#request-form').addEventListener('submit', e => {
         `https://wa.me/${process.env.NUMERO_TELEFONE}?text=${encodeURIComponent(text)}`;
 });
 
-render();
+loadProducts();
